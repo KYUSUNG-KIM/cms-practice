@@ -1,4 +1,4 @@
-package com.assignment.cms.user.dto;
+package com.assignment.cms.security.dto;
 
 import lombok.*;
 

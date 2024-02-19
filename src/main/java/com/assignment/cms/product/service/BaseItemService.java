@@ -1,10 +1,13 @@
 package com.assignment.cms.product.service;
 
+import com.assignment.cms.global.exception.CustomException;
+import com.assignment.cms.global.exception.ErrorCode;
 import com.assignment.cms.product.constants.ItemCategory;
 import com.assignment.cms.product.dto.CreateBaseItemForm;
 import com.assignment.cms.product.entity.BaseItem;
 import com.assignment.cms.product.repository.BaseItemRepository;
 import com.assignment.cms.user.entity.Seller;
+import com.assignment.cms.user.service.SellerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +18,16 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class BaseItemService {
 
+    private final SellerService sellerService;
+
     private final BaseItemRepository baseItemRepository;
 
 
     @Transactional
-    public BaseItem createBaseItem(Seller seller, CreateBaseItemForm form) {
+    public BaseItem createBaseItem(String email, CreateBaseItemForm form) {
+
+        Seller seller = sellerService.getVerifiedSellerByEmail(email)
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
 
         ItemCategory itemCategory = ItemCategory.valueOf(form.getItemCategory());
         String sku = createSku(itemCategory);
