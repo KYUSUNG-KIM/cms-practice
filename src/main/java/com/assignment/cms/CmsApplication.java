@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class CmsApplication {
 
 	public static void main(String[] args) {
-		System.out.println("hello world!");
 
 		SpringApplication.run(CmsApplication.class, args);
 	}

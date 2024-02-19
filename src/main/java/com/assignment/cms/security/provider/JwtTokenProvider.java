@@ -1,4 +1,4 @@
-package com.assignment.cms.global.config.provider;
+package com.assignment.cms.security.provider;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;

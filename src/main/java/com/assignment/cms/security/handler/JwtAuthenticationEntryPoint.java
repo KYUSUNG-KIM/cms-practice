@@ -1,4 +1,4 @@
-package com.assignment.cms.global.config.handler;
+package com.assignment.cms.security.handler;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

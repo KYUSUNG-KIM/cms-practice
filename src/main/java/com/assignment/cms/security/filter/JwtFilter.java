@@ -1,6 +1,7 @@
-package com.assignment.cms.global.config.filter;
+package com.assignment.cms.security.filter;
 
-import com.assignment.cms.global.config.provider.JwtTokenProvider;
+import com.assignment.cms.global.constants.HttpConstants;
+import com.assignment.cms.security.provider.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -15,10 +16,6 @@ import java.io.IOException;
 @Slf4j
 @RequiredArgsConstructor
 public class JwtFilter extends GenericFilterBean {
-
-    public static final String AUTHORIZATION_HEADER = "Authorization";
-
-    public static final String AUTHORIZATION_TYPE = "Bearer ";
 
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -44,8 +41,8 @@ public class JwtFilter extends GenericFilterBean {
     }
 
     private String resolveToken(HttpServletRequest request) {
-        String bearerToken = request.getHeader(AUTHORIZATION_HEADER);
-        if (StringUtils.isNotEmpty(bearerToken) && bearerToken.startsWith(AUTHORIZATION_TYPE)) {
+        String bearerToken = request.getHeader(HttpConstants.AUTHORIZATION_HEADER);
+        if (StringUtils.isNotEmpty(bearerToken) && bearerToken.startsWith(HttpConstants.AUTHORIZATION_TYPE)) {
             return bearerToken.substring(7);
         }
 
