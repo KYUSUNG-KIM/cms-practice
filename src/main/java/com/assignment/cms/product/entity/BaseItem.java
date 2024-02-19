@@ -4,7 +4,6 @@ import com.assignment.cms.global.entity.BaseEntity;
 import com.assignment.cms.product.constants.ItemCategory;
 import com.assignment.cms.product.dto.CreateBaseItemForm;
 import com.assignment.cms.user.entity.Seller;
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,9 +37,8 @@ public class BaseItem extends BaseEntity {
 
     private String description;
 
-    @NotNull
     @ManyToOne
-    @JoinColumn(name = "SELLER_ID")
+    @JoinColumn(name = "SELLER_ID", nullable = false)
     private Seller seller;
 
 
