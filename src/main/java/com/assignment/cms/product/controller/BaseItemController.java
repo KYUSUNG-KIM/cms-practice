@@ -29,4 +29,5 @@ public class BaseItemController {
 
         return new CommonResponse(BaseItemDto.of(baseItem));
     }
+
 }
